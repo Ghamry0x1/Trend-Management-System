@@ -1,0 +1,1292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TrendModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+          <Property Name="User_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DefBroker">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrokerName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WebSite" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Industry" Type="nvarchar" MaxLength="100" />
+          <Property Name="FK_CreatorID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DefClient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WebSite" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Industry" Type="nvarchar" MaxLength="100" />
+          <Property Name="FK_CreatorID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DefCompany">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyAddress" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DefContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="FK_DefContactReferenceTypeID" Type="int" Nullable="false" />
+          <Property Name="FK_ReferenceID" Type="int" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Position" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Telephone1" Type="nvarchar" MaxLength="15" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="15" />
+          <Property Name="Mobile1" Type="nvarchar" MaxLength="15" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="15" />
+          <Property Name="FK_CreatorID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DefContactReferenceType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactReferenceTypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DefLandlord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LandlordName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WebSite" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Industry" Type="nvarchar" MaxLength="100" />
+          <Property Name="FK_CreatorID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DefModuleStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_SecModuleID" Type="int" Nullable="false" />
+          <Property Name="ModuleStatusName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HREmployee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="IdentificationNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="LedLead">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_DefCompanyID" Type="int" Nullable="false" />
+          <Property Name="LeadSerial" Type="int" Nullable="false" />
+          <Property Name="LeadName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LeadDate" Type="datetime" Nullable="false" />
+          <Property Name="NewOfficeSize" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NewOfficeAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="ExpectedBudget" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FK_DefClientID" Type="int" Nullable="false" />
+          <Property Name="FK_DefBrokerID" Type="int" />
+          <Property Name="FK_BrokerDefContactID" Type="int" />
+          <Property Name="FK_DefModuleStatusID" Type="int" />
+          <Property Name="FK_LedLeadSourceID" Type="int" />
+          <Property Name="FK_AssignedByHREmployeeID" Type="int" />
+          <Property Name="FK_AssignedToHREmployeeID" Type="int" />
+          <Property Name="LeadAssignedDate" Type="datetime" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+          <Property Name="FK_CreatorID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LedLeadClientContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_LedLeadID" Type="int" Nullable="false" />
+          <Property Name="FK_DefContactID" Type="int" Nullable="false" />
+          <Property Name="FK_CreatorID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LedLeadFrom">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_LedLeadID" Type="int" Nullable="false" />
+          <Property Name="FK_HREmployeeID" Type="int" Nullable="false" />
+          <Property Name="FK_CreatorID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LedLeadSource">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LeadSourceName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SecModule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModuleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DefContact_DefContactReferenceType">
+          <End Role="DefContactReferenceType" Type="Self.DefContactReferenceType" Multiplicity="1" />
+          <End Role="DefContact" Type="Self.DefContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefContactReferenceType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DefContact">
+              <PropertyRef Name="FK_DefContactReferenceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DefModuleStatus_SecModule">
+          <End Role="SecModule" Type="Self.SecModule" Multiplicity="1" />
+          <End Role="DefModuleStatus" Type="Self.DefModuleStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecModule">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DefModuleStatus">
+              <PropertyRef Name="FK_SecModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_DefBroker">
+          <End Role="DefBroker" Type="Self.DefBroker" Multiplicity="0..1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefBroker">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_DefBrokerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_DefClient">
+          <End Role="DefClient" Type="Self.DefClient" Multiplicity="1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefClient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_DefClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_DefCompany">
+          <End Role="DefCompany" Type="Self.DefCompany" Multiplicity="1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_DefCompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_DefContact">
+          <End Role="DefContact" Type="Self.DefContact" Multiplicity="0..1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefContact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_BrokerDefContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_DefModuleStatus">
+          <End Role="DefModuleStatus" Type="Self.DefModuleStatus" Multiplicity="0..1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefModuleStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_DefModuleStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_HREmployee">
+          <End Role="HREmployee" Type="Self.HREmployee" Multiplicity="0..1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HREmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_AssignedByHREmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_HREmployee1">
+          <End Role="HREmployee" Type="Self.HREmployee" Multiplicity="0..1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HREmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_AssignedToHREmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_LedLeadSource">
+          <End Role="LedLeadSource" Type="Self.LedLeadSource" Multiplicity="0..1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LedLeadSource">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_LedLeadSourceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLeadClientContact_DefContact">
+          <End Role="DefContact" Type="Self.DefContact" Multiplicity="1" />
+          <End Role="LedLeadClientContact" Type="Self.LedLeadClientContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefContact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLeadClientContact">
+              <PropertyRef Name="FK_DefContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLeadClientContact_LedLead">
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="1" />
+          <End Role="LedLeadClientContact" Type="Self.LedLeadClientContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LedLead">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLeadClientContact">
+              <PropertyRef Name="FK_LedLeadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLeadFrom_HREmployee">
+          <End Role="HREmployee" Type="Self.HREmployee" Multiplicity="1" />
+          <End Role="LedLeadFrom" Type="Self.LedLeadFrom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HREmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLeadFrom">
+              <PropertyRef Name="FK_HREmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLeadFrom_LedLead">
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="1" />
+          <End Role="LedLeadFrom" Type="Self.LedLeadFrom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LedLead">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLeadFrom">
+              <PropertyRef Name="FK_LedLeadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TrendModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DefBroker" EntityType="Self.DefBroker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DefClient" EntityType="Self.DefClient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DefCompany" EntityType="Self.DefCompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DefContact" EntityType="Self.DefContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DefContactReferenceType" EntityType="Self.DefContactReferenceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DefLandlord" EntityType="Self.DefLandlord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DefModuleStatus" EntityType="Self.DefModuleStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HREmployee" EntityType="Self.HREmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LedLead" EntityType="Self.LedLead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LedLeadClientContact" EntityType="Self.LedLeadClientContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LedLeadFrom" EntityType="Self.LedLeadFrom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LedLeadSource" EntityType="Self.LedLeadSource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecModule" EntityType="Self.SecModule" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DefContact_DefContactReferenceType" Association="Self.FK_DefContact_DefContactReferenceType">
+            <End Role="DefContactReferenceType" EntitySet="DefContactReferenceType" />
+            <End Role="DefContact" EntitySet="DefContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DefModuleStatus_SecModule" Association="Self.FK_DefModuleStatus_SecModule">
+            <End Role="SecModule" EntitySet="SecModule" />
+            <End Role="DefModuleStatus" EntitySet="DefModuleStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_DefBroker" Association="Self.FK_LedLead_DefBroker">
+            <End Role="DefBroker" EntitySet="DefBroker" />
+            <End Role="LedLead" EntitySet="LedLead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_DefClient" Association="Self.FK_LedLead_DefClient">
+            <End Role="DefClient" EntitySet="DefClient" />
+            <End Role="LedLead" EntitySet="LedLead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_DefCompany" Association="Self.FK_LedLead_DefCompany">
+            <End Role="DefCompany" EntitySet="DefCompany" />
+            <End Role="LedLead" EntitySet="LedLead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_DefContact" Association="Self.FK_LedLead_DefContact">
+            <End Role="DefContact" EntitySet="DefContact" />
+            <End Role="LedLead" EntitySet="LedLead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_DefModuleStatus" Association="Self.FK_LedLead_DefModuleStatus">
+            <End Role="DefModuleStatus" EntitySet="DefModuleStatus" />
+            <End Role="LedLead" EntitySet="LedLead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_HREmployee" Association="Self.FK_LedLead_HREmployee">
+            <End Role="HREmployee" EntitySet="HREmployee" />
+            <End Role="LedLead" EntitySet="LedLead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_HREmployee1" Association="Self.FK_LedLead_HREmployee1">
+            <End Role="HREmployee" EntitySet="HREmployee" />
+            <End Role="LedLead" EntitySet="LedLead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_LedLeadSource" Association="Self.FK_LedLead_LedLeadSource">
+            <End Role="LedLeadSource" EntitySet="LedLeadSource" />
+            <End Role="LedLead" EntitySet="LedLead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLeadClientContact_DefContact" Association="Self.FK_LedLeadClientContact_DefContact">
+            <End Role="DefContact" EntitySet="DefContact" />
+            <End Role="LedLeadClientContact" EntitySet="LedLeadClientContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLeadClientContact_LedLead" Association="Self.FK_LedLeadClientContact_LedLead">
+            <End Role="LedLead" EntitySet="LedLead" />
+            <End Role="LedLeadClientContact" EntitySet="LedLeadClientContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLeadFrom_HREmployee" Association="Self.FK_LedLeadFrom_HREmployee">
+            <End Role="HREmployee" EntitySet="HREmployee" />
+            <End Role="LedLeadFrom" EntitySet="LedLeadFrom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLeadFrom_LedLead" Association="Self.FK_LedLeadFrom_LedLead">
+            <End Role="LedLead" EntitySet="LedLead" />
+            <End Role="LedLeadFrom" EntitySet="LedLeadFrom" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TrendModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="DefBroker">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrokerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebSite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Industry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FK_CreatorID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="LedLeads" Relationship="Self.FK_LedLead_DefBroker" FromRole="DefBroker" ToRole="LedLead" />
+        </EntityType>
+        <EntityType Name="DefClient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebSite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Industry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FK_CreatorID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="LedLeads" Relationship="Self.FK_LedLead_DefClient" FromRole="DefClient" ToRole="LedLead" />
+        </EntityType>
+        <EntityType Name="DefCompany">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LedLeads" Relationship="Self.FK_LedLead_DefCompany" FromRole="DefCompany" ToRole="LedLead" />
+        </EntityType>
+        <EntityType Name="DefContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="FK_DefContactReferenceTypeID" Type="Int32" Nullable="false" />
+          <Property Name="FK_ReferenceID" Type="Int32" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="FK_CreatorID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DefContactReferenceType" Relationship="Self.FK_DefContact_DefContactReferenceType" FromRole="DefContact" ToRole="DefContactReferenceType" />
+          <NavigationProperty Name="LedLeads" Relationship="Self.FK_LedLead_DefContact" FromRole="DefContact" ToRole="LedLead" />
+          <NavigationProperty Name="LedLeadClientContacts" Relationship="Self.FK_LedLeadClientContact_DefContact" FromRole="DefContact" ToRole="LedLeadClientContact" />
+        </EntityType>
+        <EntityType Name="DefContactReferenceType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactReferenceTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DefContacts" Relationship="Self.FK_DefContact_DefContactReferenceType" FromRole="DefContactReferenceType" ToRole="DefContact" />
+        </EntityType>
+        <EntityType Name="DefLandlord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LandlordName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebSite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Industry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FK_CreatorID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="DefModuleStatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_SecModuleID" Type="Int32" Nullable="false" />
+          <Property Name="ModuleStatusName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SecModule" Relationship="Self.FK_DefModuleStatus_SecModule" FromRole="DefModuleStatus" ToRole="SecModule" />
+          <NavigationProperty Name="LedLeads" Relationship="Self.FK_LedLead_DefModuleStatus" FromRole="DefModuleStatus" ToRole="LedLead" />
+        </EntityType>
+        <EntityType Name="HREmployee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdentificationNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LedLeads" Relationship="Self.FK_LedLead_HREmployee" FromRole="HREmployee" ToRole="LedLead" />
+          <NavigationProperty Name="LedLeads1" Relationship="Self.FK_LedLead_HREmployee1" FromRole="HREmployee" ToRole="LedLead" />
+          <NavigationProperty Name="LedLeadFroms" Relationship="Self.FK_LedLeadFrom_HREmployee" FromRole="HREmployee" ToRole="LedLeadFrom" />
+        </EntityType>
+        <EntityType Name="LedLead">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_DefCompanyID" Type="Int32" Nullable="false" />
+          <Property Name="LeadSerial" Type="Int32" Nullable="false" />
+          <Property Name="LeadName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LeadDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NewOfficeSize" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NewOfficeAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ExpectedBudget" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FK_DefClientID" Type="Int32" Nullable="false" />
+          <Property Name="FK_DefBrokerID" Type="Int32" />
+          <Property Name="FK_BrokerDefContactID" Type="Int32" />
+          <Property Name="FK_DefModuleStatusID" Type="Int32" />
+          <Property Name="FK_LedLeadSourceID" Type="Int32" />
+          <Property Name="FK_AssignedByHREmployeeID" Type="Int32" />
+          <Property Name="FK_AssignedToHREmployeeID" Type="Int32" />
+          <Property Name="LeadAssignedDate" Type="DateTime" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FK_CreatorID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DefBroker" Relationship="Self.FK_LedLead_DefBroker" FromRole="LedLead" ToRole="DefBroker" />
+          <NavigationProperty Name="DefClient" Relationship="Self.FK_LedLead_DefClient" FromRole="LedLead" ToRole="DefClient" />
+          <NavigationProperty Name="DefCompany" Relationship="Self.FK_LedLead_DefCompany" FromRole="LedLead" ToRole="DefCompany" />
+          <NavigationProperty Name="DefContact" Relationship="Self.FK_LedLead_DefContact" FromRole="LedLead" ToRole="DefContact" />
+          <NavigationProperty Name="DefModuleStatu" Relationship="Self.FK_LedLead_DefModuleStatus" FromRole="LedLead" ToRole="DefModuleStatus" />
+          <NavigationProperty Name="HREmployee" Relationship="Self.FK_LedLead_HREmployee" FromRole="LedLead" ToRole="HREmployee" />
+          <NavigationProperty Name="HREmployee1" Relationship="Self.FK_LedLead_HREmployee1" FromRole="LedLead" ToRole="HREmployee" />
+          <NavigationProperty Name="LedLeadSource" Relationship="Self.FK_LedLead_LedLeadSource" FromRole="LedLead" ToRole="LedLeadSource" />
+          <NavigationProperty Name="LedLeadClientContacts" Relationship="Self.FK_LedLeadClientContact_LedLead" FromRole="LedLead" ToRole="LedLeadClientContact" />
+          <NavigationProperty Name="LedLeadFroms" Relationship="Self.FK_LedLeadFrom_LedLead" FromRole="LedLead" ToRole="LedLeadFrom" />
+        </EntityType>
+        <EntityType Name="LedLeadClientContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_LedLeadID" Type="Int32" Nullable="false" />
+          <Property Name="FK_DefContactID" Type="Int32" Nullable="false" />
+          <Property Name="FK_CreatorID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DefContact" Relationship="Self.FK_LedLeadClientContact_DefContact" FromRole="LedLeadClientContact" ToRole="DefContact" />
+          <NavigationProperty Name="LedLead" Relationship="Self.FK_LedLeadClientContact_LedLead" FromRole="LedLeadClientContact" ToRole="LedLead" />
+        </EntityType>
+        <EntityType Name="LedLeadFrom">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_LedLeadID" Type="Int32" Nullable="false" />
+          <Property Name="FK_HREmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="FK_CreatorID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="HREmployee" Relationship="Self.FK_LedLeadFrom_HREmployee" FromRole="LedLeadFrom" ToRole="HREmployee" />
+          <NavigationProperty Name="LedLead" Relationship="Self.FK_LedLeadFrom_LedLead" FromRole="LedLeadFrom" ToRole="LedLead" />
+        </EntityType>
+        <EntityType Name="LedLeadSource">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LeadSourceName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LedLeads" Relationship="Self.FK_LedLead_LedLeadSource" FromRole="LedLeadSource" ToRole="LedLead" />
+        </EntityType>
+        <EntityType Name="SecModule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DefModuleStatus" Relationship="Self.FK_DefModuleStatus_SecModule" FromRole="SecModule" ToRole="DefModuleStatus" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_DefBroker">
+          <End Role="DefBroker" Type="Self.DefBroker" Multiplicity="0..1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefBroker">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_DefBrokerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_DefClient">
+          <End Role="DefClient" Type="Self.DefClient" Multiplicity="1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefClient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_DefClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_DefCompany">
+          <End Role="DefCompany" Type="Self.DefCompany" Multiplicity="1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefCompany">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_DefCompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DefContact_DefContactReferenceType">
+          <End Role="DefContactReferenceType" Type="Self.DefContactReferenceType" Multiplicity="1" />
+          <End Role="DefContact" Type="Self.DefContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefContactReferenceType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DefContact">
+              <PropertyRef Name="FK_DefContactReferenceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_DefContact">
+          <End Role="DefContact" Type="Self.DefContact" Multiplicity="0..1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefContact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_BrokerDefContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLeadClientContact_DefContact">
+          <End Role="DefContact" Type="Self.DefContact" Multiplicity="1" />
+          <End Role="LedLeadClientContact" Type="Self.LedLeadClientContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefContact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLeadClientContact">
+              <PropertyRef Name="FK_DefContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DefModuleStatus_SecModule">
+          <End Role="SecModule" Type="Self.SecModule" Multiplicity="1" />
+          <End Role="DefModuleStatus" Type="Self.DefModuleStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecModule">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DefModuleStatus">
+              <PropertyRef Name="FK_SecModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_DefModuleStatus">
+          <End Role="DefModuleStatus" Type="Self.DefModuleStatu" Multiplicity="0..1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefModuleStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_DefModuleStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_HREmployee">
+          <End Role="HREmployee" Type="Self.HREmployee" Multiplicity="0..1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HREmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_AssignedByHREmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_HREmployee1">
+          <End Role="HREmployee" Type="Self.HREmployee" Multiplicity="0..1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HREmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_AssignedToHREmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLeadFrom_HREmployee">
+          <End Role="HREmployee" Type="Self.HREmployee" Multiplicity="1" />
+          <End Role="LedLeadFrom" Type="Self.LedLeadFrom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HREmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLeadFrom">
+              <PropertyRef Name="FK_HREmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLead_LedLeadSource">
+          <End Role="LedLeadSource" Type="Self.LedLeadSource" Multiplicity="0..1" />
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LedLeadSource">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLead">
+              <PropertyRef Name="FK_LedLeadSourceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLeadClientContact_LedLead">
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="1" />
+          <End Role="LedLeadClientContact" Type="Self.LedLeadClientContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LedLead">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLeadClientContact">
+              <PropertyRef Name="FK_LedLeadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LedLeadFrom_LedLead">
+          <End Role="LedLead" Type="Self.LedLead" Multiplicity="1" />
+          <End Role="LedLeadFrom" Type="Self.LedLeadFrom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LedLead">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LedLeadFrom">
+              <PropertyRef Name="FK_LedLeadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="TrendEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="DefBrokers" EntityType="Self.DefBroker" />
+          <EntitySet Name="DefClients" EntityType="Self.DefClient" />
+          <EntitySet Name="DefCompanies" EntityType="Self.DefCompany" />
+          <EntitySet Name="DefContacts" EntityType="Self.DefContact" />
+          <EntitySet Name="DefContactReferenceTypes" EntityType="Self.DefContactReferenceType" />
+          <EntitySet Name="DefLandlords" EntityType="Self.DefLandlord" />
+          <EntitySet Name="DefModuleStatus" EntityType="Self.DefModuleStatu" />
+          <EntitySet Name="HREmployees" EntityType="Self.HREmployee" />
+          <EntitySet Name="LedLeads" EntityType="Self.LedLead" />
+          <EntitySet Name="LedLeadClientContacts" EntityType="Self.LedLeadClientContact" />
+          <EntitySet Name="LedLeadFroms" EntityType="Self.LedLeadFrom" />
+          <EntitySet Name="LedLeadSources" EntityType="Self.LedLeadSource" />
+          <EntitySet Name="SecModules" EntityType="Self.SecModule" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_DefBroker" Association="Self.FK_LedLead_DefBroker">
+            <End Role="DefBroker" EntitySet="DefBrokers" />
+            <End Role="LedLead" EntitySet="LedLeads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_DefClient" Association="Self.FK_LedLead_DefClient">
+            <End Role="DefClient" EntitySet="DefClients" />
+            <End Role="LedLead" EntitySet="LedLeads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_DefCompany" Association="Self.FK_LedLead_DefCompany">
+            <End Role="DefCompany" EntitySet="DefCompanies" />
+            <End Role="LedLead" EntitySet="LedLeads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DefContact_DefContactReferenceType" Association="Self.FK_DefContact_DefContactReferenceType">
+            <End Role="DefContactReferenceType" EntitySet="DefContactReferenceTypes" />
+            <End Role="DefContact" EntitySet="DefContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_DefContact" Association="Self.FK_LedLead_DefContact">
+            <End Role="DefContact" EntitySet="DefContacts" />
+            <End Role="LedLead" EntitySet="LedLeads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLeadClientContact_DefContact" Association="Self.FK_LedLeadClientContact_DefContact">
+            <End Role="DefContact" EntitySet="DefContacts" />
+            <End Role="LedLeadClientContact" EntitySet="LedLeadClientContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DefModuleStatus_SecModule" Association="Self.FK_DefModuleStatus_SecModule">
+            <End Role="SecModule" EntitySet="SecModules" />
+            <End Role="DefModuleStatus" EntitySet="DefModuleStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_DefModuleStatus" Association="Self.FK_LedLead_DefModuleStatus">
+            <End Role="DefModuleStatus" EntitySet="DefModuleStatus" />
+            <End Role="LedLead" EntitySet="LedLeads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_HREmployee" Association="Self.FK_LedLead_HREmployee">
+            <End Role="HREmployee" EntitySet="HREmployees" />
+            <End Role="LedLead" EntitySet="LedLeads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_HREmployee1" Association="Self.FK_LedLead_HREmployee1">
+            <End Role="HREmployee" EntitySet="HREmployees" />
+            <End Role="LedLead" EntitySet="LedLeads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLeadFrom_HREmployee" Association="Self.FK_LedLeadFrom_HREmployee">
+            <End Role="HREmployee" EntitySet="HREmployees" />
+            <End Role="LedLeadFrom" EntitySet="LedLeadFroms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLead_LedLeadSource" Association="Self.FK_LedLead_LedLeadSource">
+            <End Role="LedLeadSource" EntitySet="LedLeadSources" />
+            <End Role="LedLead" EntitySet="LedLeads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLeadClientContact_LedLead" Association="Self.FK_LedLeadClientContact_LedLead">
+            <End Role="LedLead" EntitySet="LedLeads" />
+            <End Role="LedLeadClientContact" EntitySet="LedLeadClientContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LedLeadFrom_LedLead" Association="Self.FK_LedLeadFrom_LedLead">
+            <End Role="LedLead" EntitySet="LedLeads" />
+            <End Role="LedLeadFrom" EntitySet="LedLeadFroms" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TrendModelStoreContainer" CdmEntityContainer="TrendEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="TrendModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="TrendModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="TrendModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="TrendModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefBrokers">
+            <EntityTypeMapping TypeName="TrendModel.DefBroker">
+              <MappingFragment StoreEntitySet="DefBroker">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BrokerName" ColumnName="BrokerName" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Industry" ColumnName="Industry" />
+                <ScalarProperty Name="FK_CreatorID" ColumnName="FK_CreatorID" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefClients">
+            <EntityTypeMapping TypeName="TrendModel.DefClient">
+              <MappingFragment StoreEntitySet="DefClient">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Industry" ColumnName="Industry" />
+                <ScalarProperty Name="FK_CreatorID" ColumnName="FK_CreatorID" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefCompanies">
+            <EntityTypeMapping TypeName="TrendModel.DefCompany">
+              <MappingFragment StoreEntitySet="DefCompany">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefContacts">
+            <EntityTypeMapping TypeName="TrendModel.DefContact">
+              <MappingFragment StoreEntitySet="DefContact">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_DefContactReferenceTypeID" ColumnName="FK_DefContactReferenceTypeID" />
+                <ScalarProperty Name="FK_ReferenceID" ColumnName="FK_ReferenceID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Telephone1" ColumnName="Telephone1" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Mobile1" ColumnName="Mobile1" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="FK_CreatorID" ColumnName="FK_CreatorID" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefContactReferenceTypes">
+            <EntityTypeMapping TypeName="TrendModel.DefContactReferenceType">
+              <MappingFragment StoreEntitySet="DefContactReferenceType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ContactReferenceTypeName" ColumnName="ContactReferenceTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefLandlords">
+            <EntityTypeMapping TypeName="TrendModel.DefLandlord">
+              <MappingFragment StoreEntitySet="DefLandlord">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LandlordName" ColumnName="LandlordName" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Industry" ColumnName="Industry" />
+                <ScalarProperty Name="FK_CreatorID" ColumnName="FK_CreatorID" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefModuleStatus">
+            <EntityTypeMapping TypeName="TrendModel.DefModuleStatu">
+              <MappingFragment StoreEntitySet="DefModuleStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_SecModuleID" ColumnName="FK_SecModuleID" />
+                <ScalarProperty Name="ModuleStatusName" ColumnName="ModuleStatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HREmployees">
+            <EntityTypeMapping TypeName="TrendModel.HREmployee">
+              <MappingFragment StoreEntitySet="HREmployee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="IdentificationNumber" ColumnName="IdentificationNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LedLeads">
+            <EntityTypeMapping TypeName="TrendModel.LedLead">
+              <MappingFragment StoreEntitySet="LedLead">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_DefCompanyID" ColumnName="FK_DefCompanyID" />
+                <ScalarProperty Name="LeadSerial" ColumnName="LeadSerial" />
+                <ScalarProperty Name="LeadName" ColumnName="LeadName" />
+                <ScalarProperty Name="LeadDate" ColumnName="LeadDate" />
+                <ScalarProperty Name="NewOfficeSize" ColumnName="NewOfficeSize" />
+                <ScalarProperty Name="NewOfficeAddress" ColumnName="NewOfficeAddress" />
+                <ScalarProperty Name="ExpectedBudget" ColumnName="ExpectedBudget" />
+                <ScalarProperty Name="FK_DefClientID" ColumnName="FK_DefClientID" />
+                <ScalarProperty Name="FK_DefBrokerID" ColumnName="FK_DefBrokerID" />
+                <ScalarProperty Name="FK_BrokerDefContactID" ColumnName="FK_BrokerDefContactID" />
+                <ScalarProperty Name="FK_DefModuleStatusID" ColumnName="FK_DefModuleStatusID" />
+                <ScalarProperty Name="FK_LedLeadSourceID" ColumnName="FK_LedLeadSourceID" />
+                <ScalarProperty Name="FK_AssignedByHREmployeeID" ColumnName="FK_AssignedByHREmployeeID" />
+                <ScalarProperty Name="FK_AssignedToHREmployeeID" ColumnName="FK_AssignedToHREmployeeID" />
+                <ScalarProperty Name="LeadAssignedDate" ColumnName="LeadAssignedDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="FK_CreatorID" ColumnName="FK_CreatorID" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LedLeadClientContacts">
+            <EntityTypeMapping TypeName="TrendModel.LedLeadClientContact">
+              <MappingFragment StoreEntitySet="LedLeadClientContact">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_LedLeadID" ColumnName="FK_LedLeadID" />
+                <ScalarProperty Name="FK_DefContactID" ColumnName="FK_DefContactID" />
+                <ScalarProperty Name="FK_CreatorID" ColumnName="FK_CreatorID" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LedLeadFroms">
+            <EntityTypeMapping TypeName="TrendModel.LedLeadFrom">
+              <MappingFragment StoreEntitySet="LedLeadFrom">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_LedLeadID" ColumnName="FK_LedLeadID" />
+                <ScalarProperty Name="FK_HREmployeeID" ColumnName="FK_HREmployeeID" />
+                <ScalarProperty Name="FK_CreatorID" ColumnName="FK_CreatorID" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LedLeadSources">
+            <EntityTypeMapping TypeName="TrendModel.LedLeadSource">
+              <MappingFragment StoreEntitySet="LedLeadSource">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LeadSourceName" ColumnName="LeadSourceName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecModules">
+            <EntityTypeMapping TypeName="TrendModel.SecModule">
+              <MappingFragment StoreEntitySet="SecModule">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="TrendModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

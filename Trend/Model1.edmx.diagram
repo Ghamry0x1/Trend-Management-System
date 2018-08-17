@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cf6af221f6214c31b2131e401a3cccc0" Name="Diagram1" ZoomLevel="59">
+        <EntityTypeShape EntityType="TrendModel.AspNetRole" Width="1.5" PointX="5.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.AspNetUserClaim" Width="1.5" PointX="10.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.AspNetUserLogin" Width="1.5" PointX="10.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.AspNetUser" Width="1.5" PointX="8" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.DefBroker" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.DefClient" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.DefCompany" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.DefContact" Width="1.5" PointX="0.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.DefContactReferenceType" Width="1.5" PointX="1.5" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.DefLandlord" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.DefModuleStatu" Width="1.5" PointX="0.75" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.HREmployee" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.LedLead" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.LedLeadClientContact" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.LedLeadFrom" Width="1.5" PointX="8.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.LedLeadSource" Width="1.5" PointX="0.75" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrendModel.SecModule" Width="1.5" PointX="1.5" PointY="29.625" IsExpanded="true" />
+        <AssociationConnector Association="TrendModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.FK_LedLead_DefBroker" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.FK_LedLead_DefClient" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.FK_LedLead_DefCompany" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.FK_DefContact_DefContactReferenceType" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.FK_LedLead_DefContact" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.FK_LedLeadClientContact_DefContact" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.FK_DefModuleStatus_SecModule" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.FK_LedLead_DefModuleStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.FK_LedLead_HREmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.FK_LedLead_HREmployee1" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.FK_LedLeadFrom_HREmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.FK_LedLead_LedLeadSource" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.FK_LedLeadClientContact_LedLead" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.FK_LedLeadFrom_LedLead" ManuallyRouted="false" />
+        <AssociationConnector Association="TrendModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
