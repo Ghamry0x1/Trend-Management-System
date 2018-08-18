@@ -54,15 +54,15 @@ namespace Trend
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "2184497408501143",
+               appSecret: "45cceafd0530da470972fd9bd82205b8");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "889589920071-6h22k3csa7ovofnf1ku7fpm4o1rpu3i8.apps.googleusercontent.com",
+                ClientSecret = "bKZ0Rr7u5jMczfGMTyQbMEXZ"
+            });
         }
     }
 }
