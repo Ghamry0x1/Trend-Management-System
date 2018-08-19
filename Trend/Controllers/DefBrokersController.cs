@@ -49,6 +49,11 @@ namespace Trend.Controllers
         {
             if (ModelState.IsValid)
             {
+                defBroker.FK_CreatorID = GetCurrUserID();
+                DateTime nowTimestamp = DateTime.Now;
+                defBroker.CreationDate = nowTimestamp;
+                defBroker.LastModifiedDate = nowTimestamp;
+
                 db.DefBrokers.Add(defBroker);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,13 +87,23 @@ namespace Trend.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(defBroker).State = EntityState.Modified;
+                defBroker.FK_CreatorID = GetCurrUserID();
+                DateTime nowTimestamp = DateTime.Now;
+                defBroker.LastModifiedDate = nowTimestamp;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(defBroker);
         }
 
-        // GET: DefBrokers/Delete/5
+        private String GetCurrUserID()
+        {
+            // Get actual user ID later.
+            return "1";
+        }
+
+        /*// GET: DefBrokers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,6 +128,7 @@ namespace Trend.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        */
 
         protected override void Dispose(bool disposing)
         {

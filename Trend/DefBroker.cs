@@ -11,6 +11,7 @@ namespace Trend
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     public partial class DefBroker
@@ -23,17 +24,23 @@ namespace Trend
 
         public int ID { get; set; }
         [Required]
+        [DisplayName("Broker Name")]
         public string BrokerName { get; set; }
+        [RegularExpression(@"((www\.|(http|https|ftp|news|file|)+\:\/\/)?[&#95;.a-z0-9-]+\.[a-z0-9\/&#95;:@=.+?,##%&~-]*[^.|\'|\# |!|\(|?|,| |>|<|;|\)])", ErrorMessage = "Please enter a valid url")]
+        [DisplayName("Website")]
         public string WebSite { get; set; }
         [Required]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         public string Address { get; set; }
         public string Industry { get; set; }
         [Required]
         public string FK_CreatorID { get; set; }
         [Required]
+        [DisplayName("Creation Date")]
         public System.DateTime CreationDate { get; set; }
         [Required]
+        [DisplayName("Last Modified Date")]
         public System.DateTime LastModifiedDate { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
