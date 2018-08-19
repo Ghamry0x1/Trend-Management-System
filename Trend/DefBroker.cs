@@ -34,12 +34,9 @@ namespace Trend
         public string Email { get; set; }
         public string Address { get; set; }
         public string Industry { get; set; }
-        [Required]
         public string FK_CreatorID { get; set; }
-        [Required]
         [DisplayName("Creation Date")]
         public System.DateTime CreationDate { get; set; }
-        [Required]
         [DisplayName("Last Modified Date")]
         public System.DateTime LastModifiedDate { get; set; }
 
