@@ -20,7 +20,7 @@ namespace Trend
         {
             this.LedLeads = new HashSet<LedLead>();
         }
-    
+
         public int ID { get; set; }
         [Required]
         public string BrokerName { get; set; }
@@ -35,7 +35,7 @@ namespace Trend
         public System.DateTime CreationDate { get; set; }
         [Required]
         public System.DateTime LastModifiedDate { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LedLead> LedLeads { get; set; }
     }

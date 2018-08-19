@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Trend
+namespace Trend.Controllers
 {
     public class DefBrokersController : Controller
     {
