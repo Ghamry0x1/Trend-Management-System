@@ -14,6 +14,18 @@ namespace Trend
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Brokers",
+                url: "Brokers/{action}/{id}",
+                defaults: new { controller = "DefBrokers", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Clients",
+                url: "Clients/{action}/{id}",
+                defaults: new { controller = "DefClients", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
