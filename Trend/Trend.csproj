@@ -213,6 +213,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DefClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HREmployeesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DefBroker.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -364,6 +365,11 @@
     <Content Include="Views\DefClients\Details.cshtml" />
     <Content Include="Views\DefClients\Edit.cshtml" />
     <Content Include="Views\DefClients\Index.cshtml" />
+    <Content Include="Views\HREmployees\Create.cshtml" />
+    <Content Include="Views\HREmployees\Delete.cshtml" />
+    <Content Include="Views\HREmployees\Details.cshtml" />
+    <Content Include="Views\HREmployees\Edit.cshtml" />
+    <Content Include="Views\HREmployees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -378,6 +384,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
