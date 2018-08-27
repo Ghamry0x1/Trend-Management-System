@@ -24,17 +24,23 @@ namespace Trend
 
         public int ID { get; set; }
         [Required]
+        [StringLength(100)]
         [DisplayName("Client Name")]
         public string ClientName { get; set; }
 
         //below regex is for websites url validation, that validates url without "http://", "https://" or "www"
         [RegularExpression(@"((www\.|(http|https|ftp|news|file|)+\:\/\/)?[&#95;.a-z0-9-]+\.[a-z0-9\/&#95;:@=.+?,##%&~-]*[^.|\'|\# |!|\(|?|,| |>|<|;|\)])", ErrorMessage = "Please check the url")]
+        [StringLength(100)]
         public string WebSite { get; set; }
         [Required]
+        [StringLength(100)]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [StringLength(100)]
         public string Address { get; set; }
+        [StringLength(100)]
         public string Industry { get; set; }
+        [StringLength(128)]
         public string FK_CreatorID { get; set; }
         [DisplayName("Creation Date")]
         public System.DateTime CreationDate { get; set; }
