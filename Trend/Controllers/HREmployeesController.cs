@@ -20,6 +20,7 @@ namespace Trend.Controllers
             return View(db.HREmployees.ToList());
         }
 
+
         // GET: HREmployees/Details/5
         public ActionResult Details(int? id)
         {
@@ -53,7 +54,8 @@ namespace Trend.Controllers
                 db.HREmployees.Add(hREmployee);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+
+            } 
 
             return View(hREmployee);
         }
@@ -90,30 +92,35 @@ namespace Trend.Controllers
         }
 
         // GET: HREmployees/Delete/5
-        public ActionResult Delete(int? id)
+     //   public ActionResult Delete(int? id)
+     //   {
+        //     if (id == null)
+          //  {
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+           // }
+            //HREmployee hREmployee = db.HREmployees.Find(id);
+            //if (hREmployee == null)
+            //{
+              //  return HttpNotFound();
+            //}
+            //return View(hREmployee);
+        //}
+        public String CurrentUserID()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            HREmployee hREmployee = db.HREmployees.Find(id);
-            if (hREmployee == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hREmployee);
+
+            return "1";
         }
 
         // POST: HREmployees/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            HREmployee hREmployee = db.HREmployees.Find(id);
-            db.HREmployees.Remove(hREmployee);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+       // [HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+   //     public ActionResult DeleteConfirmed(int id)
+     //   {
+       //     HREmployee hREmployee = db.HREmployees.Find(id);
+         //   db.HREmployees.Remove(hREmployee);
+           // db.SaveChanges();
+            //return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
