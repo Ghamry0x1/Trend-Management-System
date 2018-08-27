@@ -11,7 +11,8 @@ namespace Trend
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class HREmployee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,9 +24,12 @@ namespace Trend
         }
     
         public int ID { get; set; }
+        [DisplayName("Employee Name")]
         public string EmployeeName { get; set; }
         public string Surname { get; set; }
+        [DisplayName("Birth Date")]
         public System.DateTime BirthDate { get; set; }
+        [DisplayName("Identification Number")]
         public string IdentificationNumber { get; set; }
         public string Address { get; set; }
         public string Telephone { get; set; }
