@@ -12,6 +12,7 @@ namespace Trend
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            //routes.MapMvcAttributeRoutes();
 
             routes.MapRoute(
                 name: "Brokers",
@@ -23,6 +24,12 @@ namespace Trend
                 name: "Clients",
                 url: "Clients/{action}/{id}",
                 defaults: new { controller = "DefClients", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Employees",
+                url: "Employees/{action}/{id}",
+                defaults: new { controller = "HREmployees", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

@@ -88,6 +88,7 @@ namespace Trend.Controllers
             {
                 db.Entry(defBroker).State = EntityState.Modified;
                 defBroker.FK_CreatorID = GetCurrUserID();
+
                 DateTime nowTimestamp = DateTime.Now;
                 defBroker.LastModifiedDate = nowTimestamp;
 
