@@ -1,0 +1,141 @@
+﻿@model IEnumerable<Trend.LedLead>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LeadSerial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeadName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeadDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewOfficeSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewOfficeAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpectedBudget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeadAssignedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_CreatorID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastModifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefBroker.BrokerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefClient.ClientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefCompany.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefContact.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefModuleStatu.ModuleStatusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HREmployee.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HREmployee1.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LedLeadSource.LeadSourceName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeadSerial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeadName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeadDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewOfficeSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewOfficeAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpectedBudget)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeadAssignedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_CreatorID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefBroker.BrokerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefClient.ClientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefCompany.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefContact.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefModuleStatu.ModuleStatusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HREmployee.EmployeeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HREmployee1.EmployeeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LedLeadSource.LeadSourceName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
