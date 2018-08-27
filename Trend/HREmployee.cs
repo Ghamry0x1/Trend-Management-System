@@ -11,6 +11,7 @@ namespace Trend
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     public partial class HREmployee
@@ -24,11 +25,14 @@ namespace Trend
         }
     
         public int ID { get; set; }
+        [DisplayName("Employee Name")]
         [StringLength(100)]
         public string EmployeeName { get; set; }
         [StringLength(100)]
         public string Surname { get; set; }
+        [DisplayName("Birth Date")]
         public System.DateTime BirthDate { get; set; }
+        [DisplayName("Identification Number")]
         [StringLength(20)]
         public string IdentificationNumber { get; set; }
         [StringLength(100)]
