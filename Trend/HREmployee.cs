@@ -29,7 +29,7 @@ namespace Trend
         public string Surname { get; set; }
         [DisplayName("Birth Date")]
         public System.DateTime BirthDate { get; set; }
-        [DisplayName("Identification Number")]
+        [DisplayName("Identification Number.")]
         public string IdentificationNumber { get; set; }
         public string Address { get; set; }
         public string Telephone { get; set; }
