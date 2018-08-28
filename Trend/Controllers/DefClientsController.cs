@@ -12,6 +12,7 @@ using Trend.Models;
 
 namespace Trend.Controllers
 {
+    [Route("Clients/{action}")]
     public class DefClientsController : Controller
     {
         private TrendEntities db = new TrendEntities();

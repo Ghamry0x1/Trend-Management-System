@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Trend.Controllers
 {
+    [Route("Brokers/{action}")]
     public class DefBrokersController : Controller
     {
         private TrendEntities db = new TrendEntities();
@@ -61,7 +62,7 @@ namespace Trend.Controllers
 
             return View(defBroker);
         }
-
+        
         // GET: DefBrokers/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -98,6 +99,20 @@ namespace Trend.Controllers
             return View(defBroker);
         }
 
+        public JsonResult isBrokerNameExist(string brokerName, int? Id)
+        {
+            var validateName = db.DefBrokers.FirstOrDefault
+                                (x => x.BrokerName == brokerName && x.ID != Id);
+            if (validateName != null)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         private String GetCurrUserID()
         {
             // Get actual user ID later.
@@ -130,7 +145,7 @@ namespace Trend.Controllers
             return RedirectToAction("Index");
         }
         */
-
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)
