@@ -10,6 +10,7 @@ using Trend;
 
 namespace Trend.Controllers
 {
+    [Route("Employees/{action}")]
     public class HREmployeesController : Controller
     {
         private TrendEntities db = new TrendEntities();

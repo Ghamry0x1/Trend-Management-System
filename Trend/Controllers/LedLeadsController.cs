@@ -10,6 +10,7 @@ using Trend;
 
 namespace Trend.Controllers
 {
+    [Route("Lead/{action}")]
     public class LedLeadsController : Controller
     {
         private TrendEntities db = new TrendEntities();

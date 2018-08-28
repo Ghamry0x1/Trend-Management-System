@@ -12,26 +12,8 @@ namespace Trend
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            //routes.MapMvcAttributeRoutes();
-
-            routes.MapRoute(
-                name: "Brokers",
-                url: "Brokers/{action}/{id}",
-                defaults: new { controller = "DefBrokers", action = "Index", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-                name: "Clients",
-                url: "Clients/{action}/{id}",
-                defaults: new { controller = "DefClients", action = "Index", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-                name: "Employees",
-                url: "Employees/{action}/{id}",
-                defaults: new { controller = "HREmployees", action = "Index", id = UrlParameter.Optional }
-            );
-
+            routes.MapMvcAttributeRoutes();
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

@@ -13,6 +13,7 @@ namespace Trend
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
 
     public partial class DefBroker
     {
@@ -26,6 +27,7 @@ namespace Trend
         [Required]
         [StringLength(100)]
         [DisplayName("Broker Name")]
+        [Remote("isBrokerNameExist", "DefBrokers", AdditionalFields = "ID", ErrorMessage = "Broker name already exists")]
         public string BrokerName { get; set; }
         [RegularExpression(@"((www\.|(http|https|ftp|news|file|)+\:\/\/)?[&#95;.a-z0-9-]+\.[a-z0-9\/&#95;:@=.+?,##%&~-]*[^.|\'|\# |!|\(|?|,| |>|<|;|\)])", ErrorMessage = "Please enter a valid url")]
         [StringLength(100)]
