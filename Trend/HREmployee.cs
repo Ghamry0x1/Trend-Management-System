@@ -12,10 +12,7 @@ namespace Trend
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-<<<<<<< HEAD
-=======
     using System.ComponentModel.DataAnnotations;
->>>>>>> 92d098adcd7bf6d66d2a7135af6d4c0af97cbb7b
 
     public partial class HREmployee
     {
@@ -29,20 +26,14 @@ namespace Trend
     
         public int ID { get; set; }
         [DisplayName("Employee Name")]
-<<<<<<< HEAD
-=======
         [StringLength(100)]
->>>>>>> 92d098adcd7bf6d66d2a7135af6d4c0af97cbb7b
         public string EmployeeName { get; set; }
         [StringLength(100)]
         public string Surname { get; set; }
         [DisplayName("Birth Date")]
         public System.DateTime BirthDate { get; set; }
         [DisplayName("Identification Number")]
-<<<<<<< HEAD
-=======
         [StringLength(20)]
->>>>>>> 92d098adcd7bf6d66d2a7135af6d4c0af97cbb7b
         public string IdentificationNumber { get; set; }
         [StringLength(100)]
         public string Address { get; set; }
