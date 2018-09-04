@@ -11,7 +11,9 @@ namespace Trend
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class LedLead
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,35 +22,69 @@ namespace Trend
             this.LedLeadClientContacts = new HashSet<LedLeadClientContact>();
             this.LedLeadFroms = new HashSet<LedLeadFrom>();
         }
-    
+
         public int ID { get; set; }
+        [DisplayName("Company")]
         public int FK_DefCompanyID { get; set; }
+        [Required]
+        [DisplayName("Lead Serial")]
         public int LeadSerial { get; set; }
+        [Required]
+        [StringLength(100)]
+        [DisplayName("Lead Name")]
         public string LeadName { get; set; }
+        [Required]
+        [DisplayName("Lead Date")]
         public System.DateTime LeadDate { get; set; }
+        [DisplayName("New Office Size")]
         public Nullable<decimal> NewOfficeSize { get; set; }
+        [Required]
+        [StringLength(100)]
+        [DisplayName("New Office Address")]
         public string NewOfficeAddress { get; set; }
+        [DisplayName("Expected Budget")]
         public Nullable<decimal> ExpectedBudget { get; set; }
+        [DisplayName("Client")]
         public int FK_DefClientID { get; set; }
+        [DisplayName("Broker")]
         public Nullable<int> FK_DefBrokerID { get; set; }
+        [DisplayName("Broker Contact")]
         public Nullable<int> FK_BrokerDefContactID { get; set; }
+        [DisplayName("Module Status")]
         public Nullable<int> FK_DefModuleStatusID { get; set; }
+        [DisplayName("Lead Source")]
         public Nullable<int> FK_LedLeadSourceID { get; set; }
+        [DisplayName("HREmployee Assigned")]
         public Nullable<int> FK_AssignedByHREmployeeID { get; set; }
+        [DisplayName("HREmployee2 Assigned")]
         public Nullable<int> FK_AssignedToHREmployeeID { get; set; }
+        [DisplayName("Lead Assigned Date")]
         public Nullable<System.DateTime> LeadAssignedDate { get; set; }
+        [StringLength(100)]
         public string Notes { get; set; }
+        [StringLength(100)]
         public string FK_CreatorID { get; set; }
+        [DisplayName("Creation Date")]
         public System.DateTime CreationDate { get; set; }
+        [DisplayName("Last Modified Date")]
         public System.DateTime LastModifiedDate { get; set; }
-    
+        [Required]
+        [DisplayName("Broker")]
         public virtual DefBroker DefBroker { get; set; }
+        [Required]
         public virtual DefClient DefClient { get; set; }
+        [Required]
+        [DisplayName("Company")]
         public virtual DefCompany DefCompany { get; set; }
+        [Required]
+        [DisplayName("Contact")]
         public virtual DefContact DefContact { get; set; }
+        [Required]
         public virtual DefModuleStatu DefModuleStatu { get; set; }
+        [Required]
         public virtual HREmployee HREmployee { get; set; }
         public virtual HREmployee HREmployee1 { get; set; }
+        [DisplayName("Lead Source")]
         public virtual LedLeadSource LedLeadSource { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LedLeadClientContact> LedLeadClientContacts { get; set; }

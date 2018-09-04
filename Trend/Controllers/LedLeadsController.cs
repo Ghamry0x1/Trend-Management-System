@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using Trend;
 
 namespace Trend.Controllers
 {
-    [Route("Lead/{action}")]
+    [Route("Leads/{action}")]
     public class LedLeadsController : Controller
     {
         private TrendEntities db = new TrendEntities();
@@ -34,6 +30,8 @@ namespace Trend.Controllers
             {
                 return HttpNotFound();
             }
+
+            //SHOW DETAILS, AND TABLE OF CONTACTS OF LEAD WITH ID = id
             return View(ledLead);
         }
 
@@ -60,6 +58,11 @@ namespace Trend.Controllers
         {
             if (ModelState.IsValid)
             {
+                ledLead.FK_CreatorID = GetCurrUserID();
+                DateTime nowTimestamp = DateTime.Now;
+                ledLead.CreationDate = nowTimestamp;
+                ledLead.LastModifiedDate = nowTimestamp;
+
                 db.LedLeads.Add(ledLead);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -108,6 +111,10 @@ namespace Trend.Controllers
         {
             if (ModelState.IsValid)
             {
+                ledLead.FK_CreatorID = GetCurrUserID();
+                DateTime nowTimestamp = DateTime.Now;
+                ledLead.LastModifiedDate = nowTimestamp;
+
                 db.Entry(ledLead).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -123,30 +130,10 @@ namespace Trend.Controllers
             return View(ledLead);
         }
 
-        // GET: LedLeads/Delete/5
-        public ActionResult Delete(int? id)
+        private String GetCurrUserID()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            LedLead ledLead = db.LedLeads.Find(id);
-            if (ledLead == null)
-            {
-                return HttpNotFound();
-            }
-            return View(ledLead);
-        }
-
-        // POST: LedLeads/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            LedLead ledLead = db.LedLeads.Find(id);
-            db.LedLeads.Remove(ledLead);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            // Get actual user ID later.
+            return "1";
         }
 
         protected override void Dispose(bool disposing)
@@ -157,5 +144,6 @@ namespace Trend.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }
