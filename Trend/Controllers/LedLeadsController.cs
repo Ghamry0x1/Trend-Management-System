@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace Trend.Controllers
 {
@@ -14,8 +15,13 @@ namespace Trend.Controllers
         // GET: LedLeads
         public ActionResult Index()
         {
-            var ledLeads = db.LedLeads.Include(l => l.DefBroker).Include(l => l.DefClient).Include(l => l.DefCompany).Include(l => l.DefContact).Include(l => l.DefModuleStatu).Include(l => l.HREmployee).Include(l => l.HREmployee1).Include(l => l.LedLeadSource);
-            return View(ledLeads.ToList());
+            if (!HttpContext.User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
+            else
+            {
+                var ledLeads = db.LedLeads.Include(l => l.DefBroker).Include(l => l.DefClient).Include(l => l.DefCompany).Include(l => l.DefContact).Include(l => l.DefModuleStatu).Include(l => l.HREmployee).Include(l => l.HREmployee1).Include(l => l.LedLeadSource);
+                return View(ledLeads.ToList());
+            }
         }
 
         // GET: LedLeads/Details/5
@@ -58,7 +64,7 @@ namespace Trend.Controllers
         {
             if (ModelState.IsValid)
             {
-                ledLead.FK_CreatorID = GetCurrUserID();
+                ledLead.FK_CreatorID = User.Identity.GetUserId();
                 DateTime nowTimestamp = DateTime.Now;
                 ledLead.CreationDate = nowTimestamp;
                 ledLead.LastModifiedDate = nowTimestamp;
@@ -111,7 +117,7 @@ namespace Trend.Controllers
         {
             if (ModelState.IsValid)
             {
-                ledLead.FK_CreatorID = GetCurrUserID();
+                ledLead.FK_CreatorID = User.Identity.GetUserId();
                 DateTime nowTimestamp = DateTime.Now;
                 ledLead.LastModifiedDate = nowTimestamp;
 
@@ -128,12 +134,6 @@ namespace Trend.Controllers
             ViewBag.FK_AssignedToHREmployeeID = new SelectList(db.HREmployees, "ID", "EmployeeName", ledLead.FK_AssignedToHREmployeeID);
             ViewBag.FK_LedLeadSourceID = new SelectList(db.LedLeadSources, "ID", "LeadSourceName", ledLead.FK_LedLeadSourceID);
             return View(ledLead);
-        }
-
-        private String GetCurrUserID()
-        {
-            // Get actual user ID later.
-            return "1";
         }
 
         protected override void Dispose(bool disposing)

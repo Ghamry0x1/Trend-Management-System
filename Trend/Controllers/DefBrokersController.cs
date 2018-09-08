@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -17,7 +18,10 @@ namespace Trend.Controllers
         // GET: DefBrokers
         public ActionResult Index()
         {
-            return View(db.DefBrokers.ToList());
+            if (!HttpContext.User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
+            else
+                return View(db.DefBrokers.ToList());
         }
 
         // GET: DefBrokers/Details/5
@@ -52,7 +56,7 @@ namespace Trend.Controllers
         {
             if (ModelState.IsValid)
             {
-                defBroker.FK_CreatorID = GetCurrUserID();
+                defBroker.FK_CreatorID = User.Identity.GetUserId();
                 DateTime nowTimestamp = DateTime.Now;
                 defBroker.CreationDate = nowTimestamp;
                 defBroker.LastModifiedDate = nowTimestamp;
@@ -64,7 +68,7 @@ namespace Trend.Controllers
 
             return View(defBroker);
         }
-        
+
         // GET: DefBrokers/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -90,10 +94,8 @@ namespace Trend.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(defBroker).State = EntityState.Modified;
-                defBroker.FK_CreatorID = GetCurrUserID();
-
-                DateTime nowTimestamp = DateTime.Now;
-                defBroker.LastModifiedDate = nowTimestamp;
+                defBroker.FK_CreatorID = User.Identity.GetUserId();
+                defBroker.LastModifiedDate = DateTime.Now;
 
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -115,39 +117,6 @@ namespace Trend.Controllers
             }
         }
 
-        private String GetCurrUserID()
-        {
-            // Get actual user ID later.
-            return "1";
-        }
-
-        /*// GET: DefBrokers/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DefBroker defBroker = db.DefBrokers.Find(id);
-            if (defBroker == null)
-            {
-                return HttpNotFound();
-            }
-            return View(defBroker);
-        }
-
-        // POST: DefBrokers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            DefBroker defBroker = db.DefBrokers.Find(id);
-            db.DefBrokers.Remove(defBroker);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-        */
-        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

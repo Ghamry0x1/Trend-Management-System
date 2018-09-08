@@ -18,7 +18,10 @@ namespace Trend.Controllers
         // GET: HREmployees
         public ActionResult Index()
         {
-            return View(db.HREmployees.ToList());
+            if (!HttpContext.User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
+            else
+                return View(db.HREmployees.ToList());
         }
 
 
@@ -56,7 +59,7 @@ namespace Trend.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
 
-            } 
+            }
 
             return View(hREmployee);
         }
@@ -91,37 +94,6 @@ namespace Trend.Controllers
             }
             return View(hREmployee);
         }
-
-        // GET: HREmployees/Delete/5
-     //   public ActionResult Delete(int? id)
-     //   {
-        //     if (id == null)
-          //  {
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-           // }
-            //HREmployee hREmployee = db.HREmployees.Find(id);
-            //if (hREmployee == null)
-            //{
-              //  return HttpNotFound();
-            //}
-            //return View(hREmployee);
-        //}
-        public String CurrentUserID()
-        {
-
-            return "1";
-        }
-
-        // POST: HREmployees/Delete/5
-       // [HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-   //     public ActionResult DeleteConfirmed(int id)
-     //   {
-       //     HREmployee hREmployee = db.HREmployees.Find(id);
-         //   db.HREmployees.Remove(hREmployee);
-           // db.SaveChanges();
-            //return RedirectToAction("Index");
-        //}
 
         protected override void Dispose(bool disposing)
         {
