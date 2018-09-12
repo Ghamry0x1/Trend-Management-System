@@ -225,6 +225,7 @@
     <Compile Include="DefClient.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\DefCompaniesController.cs" />
     <Compile Include="DefCompany.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -237,6 +238,7 @@
     <Compile Include="DefLandlord.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\DefLandlordsController.cs" />
     <Compile Include="DefModuleStatu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -385,6 +387,16 @@
     <Content Include="Views\LedLeads\Details.cshtml" />
     <Content Include="Views\LedLeads\Edit.cshtml" />
     <Content Include="Views\LedLeads\Index.cshtml" />
+    <Content Include="Views\DefLandlords\Create.cshtml" />
+    <Content Include="Views\DefLandlords\Delete.cshtml" />
+    <Content Include="Views\DefLandlords\Details.cshtml" />
+    <Content Include="Views\DefLandlords\Edit.cshtml" />
+    <Content Include="Views\DefLandlords\Index.cshtml" />
+    <Content Include="Views\DefCompanies\Create.cshtml" />
+    <Content Include="Views\DefCompanies\Delete.cshtml" />
+    <Content Include="Views\DefCompanies\Details.cshtml" />
+    <Content Include="Views\DefCompanies\Edit.cshtml" />
+    <Content Include="Views\DefCompanies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

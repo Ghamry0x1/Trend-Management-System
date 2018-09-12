@@ -11,17 +11,40 @@ namespace Trend
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class DefLandlord
     {
         public int ID { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [DisplayName("Landlord Name")]
         public string LandlordName { get; set; }
+
+        [RegularExpression(@"((www\.|(http|https|ftp|news|file|)+\:\/\/)?[&#95;.a-z0-9-]+\.[a-z0-9\/&#95;:@=.+?,##%&~-]*[^.|\'|\# |!|\(|?|,| |>|<|;|\)])", ErrorMessage = "Please check the url")]
+        [StringLength(100)]
+        [DisplayName("Website")]
         public string WebSite { get; set; }
+
+        [StringLength(100)]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        [StringLength(100)]
         public string Address { get; set; }
+
+        [StringLength(100)]
         public string Industry { get; set; }
+
+        [StringLength(128)]
         public string FK_CreatorID { get; set; }
+
+        [DisplayName("Creation Date")]
         public System.DateTime CreationDate { get; set; }
+
+        [DisplayName("Last Modified Date")]
         public System.DateTime LastModifiedDate { get; set; }
     }
 }
