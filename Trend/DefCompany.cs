@@ -11,7 +11,9 @@ namespace Trend
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class DefCompany
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +23,15 @@ namespace Trend
         }
     
         public int ID { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [DisplayName("Company Name")]
         public string CompanyName { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [DisplayName("Address")]
         public string CompanyAddress { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

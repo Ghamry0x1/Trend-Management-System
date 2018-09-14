@@ -22,9 +22,9 @@ namespace Trend.Controllers
         // GET: DefClients
         public ActionResult Index()
         {
-            if (!HttpContext.User.Identity.IsAuthenticated)
-                return RedirectToAction("Login", "Account");
-            else
+            //if (!HttpContext.User.Identity.IsAuthenticated)
+                //return RedirectToAction("Login", "Account");
+            //else
                 return View(db.DefClients.ToList());
         }
 
