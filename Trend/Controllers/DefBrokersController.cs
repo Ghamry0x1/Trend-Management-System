@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -47,6 +48,9 @@ namespace Trend.Controllers
             return View();
         }
 
+        //create list of notification items
+        List<SelectListItem> notificationList = new List<SelectListItem>();
+
         // POST: DefBrokers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -63,10 +67,61 @@ namespace Trend.Controllers
 
                 db.DefBrokers.Add(defBroker);
                 db.SaveChanges();
+
+                String message = HttpContext.User.Identity.Name + " has created a new Broker";
+                //System.Diagnostics.Debug.WriteLine(loggedUsername);
+                
+                //call the function with the new object to be created
+                createNotificationObject(message, notificationList);
+                //createEmailObject("jash.kaydn@lndex.org", "Trend Notification!", message);
+
                 return RedirectToAction("Index");
             }
 
             return View(defBroker);
+        }
+
+        public void createNotificationObject(String message, List<SelectListItem> notificationList)
+        {
+            //create the object
+            SelectListItem item = new SelectListItem() { Text = message };
+            //add it to the list
+            notificationList.Add(item);
+            //send the whole list to the brokers view to be rendered
+            ViewBag.notificationList = notificationList;
+            //log list
+            foreach (SelectListItem i in notificationList)
+            {
+                System.Diagnostics.Debug.WriteLine(i.Text);
+            }
+            
+        }
+
+        public void createEmailObject(String receiver, String subject, String message)
+        {
+            var senderEmail = new MailAddress("jash.kaydn@lndex.org", "Jash");
+            var receiverEmail = new MailAddress(receiver, "Receiver");
+            var password = "wetab5X$";
+            var sub = subject;
+            var body = message;
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(senderEmail.Address, password)
+            };
+            using (var mess = new MailMessage(senderEmail, receiverEmail)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(mess);
+            }
+
         }
 
         // GET: DefBrokers/Edit/5

@@ -21,15 +21,24 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <!--<li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>-->
                     <li>@Html.ActionLink("Brokers", "Index", "DefBrokers")</li>
                     <li>@Html.ActionLink("Clients", "Index", "DefClients")</li>
                     <li>@Html.ActionLink("Employees", "Index", "HREmployees")</li>
                     <li>@Html.ActionLink("Leads", "Index", "LedLeads")</li>
                     <li>@Html.ActionLink("Landlords", "Index", "DefLandlords")</li>
                     <li>@Html.ActionLink("Companies", "Index", "DefCompanies")</li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notifications<span class="caret"></span></a>
+                        
+                        <ul class="dropdown-menu">
+                            <!--foreach, loop through ViewBag.notificationList and list it in li tag-->
+                        </ul>
+                    </li>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
