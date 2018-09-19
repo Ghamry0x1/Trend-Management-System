@@ -218,14 +218,16 @@
     <Compile Include="Controllers\HREmployeesController.cs" />
     <Compile Include="Controllers\LedLeadsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NotifsController.cs" />
+    <Compile Include="Controllers\DefBrokersController.cs" />
+    <Compile Include="Controllers\DefCompaniesController.cs" />
+    <Compile Include="Controllers\DefLandlordsController.cs" />
     <Compile Include="DefBroker.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\DefBrokersController.cs" />
     <Compile Include="DefClient.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\DefCompaniesController.cs" />
     <Compile Include="DefCompany.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -238,7 +240,6 @@
     <Compile Include="DefLandlord.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\DefLandlordsController.cs" />
     <Compile Include="DefModuleStatu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -279,6 +280,9 @@
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Notif.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Partial\DefBroker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecModule.cs">
@@ -397,6 +401,8 @@
     <Content Include="Views\DefCompanies\Details.cshtml" />
     <Content Include="Views\DefCompanies\Edit.cshtml" />
     <Content Include="Views\DefCompanies\Index.cshtml" />
+    <Content Include="Views\Notifs\Create.cshtml" />
+    <Content Include="Views\Notifs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

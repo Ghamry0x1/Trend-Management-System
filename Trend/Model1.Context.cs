@@ -42,5 +42,6 @@ namespace Trend
         public virtual DbSet<LedLeadFrom> LedLeadFroms { get; set; }
         public virtual DbSet<LedLeadSource> LedLeadSources { get; set; }
         public virtual DbSet<SecModule> SecModules { get; set; }
+        public virtual DbSet<Notif> Notifs { get; set; }
     }
 }

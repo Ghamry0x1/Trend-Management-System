@@ -12,16 +12,9 @@ namespace Trend
     using System;
     using System.Collections.Generic;
     
-    public partial class DefLandlord
+    public partial class Notif
     {
         public int ID { get; set; }
-        public string LandlordName { get; set; }
-        public string WebSite { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
-        public string Industry { get; set; }
-        public string FK_CreatorID { get; set; }
-        public System.DateTime CreationDate { get; set; }
-        public System.DateTime LastModifiedDate { get; set; }
+        public string Message { get; set; }
     }
 }

@@ -22,9 +22,9 @@ namespace Trend.Controllers
         // GET: DefClients
         public ActionResult Index()
         {
-            //if (!HttpContext.User.Identity.IsAuthenticated)
-                //return RedirectToAction("Login", "Account");
-            //else
+            if (!HttpContext.User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
+            else
                 return View(db.DefClients.ToList());
         }
 
@@ -64,6 +64,13 @@ namespace Trend.Controllers
                 defClient.LastModifiedDate = nowTimestamp;
 
                 db.DefClients.Add(defClient);
+
+                /////////////
+                Notif a = new Notif();
+                a.Message = "User " + User.Identity.GetUserName().ToString() + " Added a new Client: " + defClient.ClientName.ToString();
+                db.Notifs.Add(a);
+                ///////////
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
